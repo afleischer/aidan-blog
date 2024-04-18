@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+
+<Layout title="">
+  <article>
+    <h2>Mark-and-Return: A Super Simple Task-Based Interface [Task-Based Interface #1]</h2>
+    <p>Hello, world.</p>
+    <p>
+      With this blog, I aim to push myself to learn and do more, and thus have some interesting things to hopefully say and show to the world in the process.  
+      To this end, let's address something I've been irritated by for a while.
+    </p>
+    <p>
+      When working, especially in a prior job involving multiple disparate spreadsheets and browser windows, I always found myself being irritated
+      when I had to task switch, becuase that would require me to have to find the correct window for the prior task. Even now when I flick 3 fingers upward on my 
+      Mac's trackpad for mission control I see 90 different windows, many which themselves contain tabs or some type of sub-window system within them. 
+    </p>
+    <p>I need to deal with how to handle being a desktop piler.</p>
+    <p>
+      A study done by AT&T labs on <a href="https://dl.acm.org/doi/10.1145/376929.376932" target="_blank">how people manage their physical desktops</a> 
+      came away with two strategies for handling organizing papers on a desk: piling and filing. Piling meant that most 
+      papers would end up unorganized- the threshold it set was 40% on the desk versus in filing cabinets. Filing meant the opposite,
+      where most papers would be in filing cabinets.
+    </p>
+    <p>
+      It's not just "laziness". I realized that mentally, I knew that trying to come up with task-like categories *up front* was very, very likely
+      to be inaccurate later, and wouldn't fit the dynamic nature of the tasks. I think my brain knew this and that it wouldn't be worth it to 
+      try. It's also why I never took *that* many notes in school.
+    </p>
+    <p>
+      So anecdotally, at least, I know that some type of task-based interface, which would allow me to assign task-categories AFTER my 
+      window pile has already been established, would be the best way to go.  That way I could let tasks emerge naturally and then organize.
+    </p>
+    <p>
+      I will describe my research into this topic in a bit. Before I dug too far into research I wanted to see if I could 
+      code up a custom solution I felt would meet my needs. I was able to whip up a Hammerspoon script. <a href="https://github.com/afleischer/mark-and-return-spoon" target="_blank">Here it is if you want to try it</a>.
+      It's simple. It allows you to assign ("mark") the currently open configuration of windows, and then later return to that window with another button press. 
+      It's not perfect, but it's a start. With this simple solution in hand, I set out to see what other, better solutions were already out there. 
+    </p>
+    <h3>GroupBar and Scalable Fabric- some Earlier systems</h3>
+    <p>
+      <a href="https://www.patrickbaudisch.com/projects/groupbar/index.html" target="_blank">GroupBar</a> was a project by Patrick Baudisch in 2002 that allowed users to group windows into "activities" and then switch between them.
+      Thinking to modern operating systems, I see the echoes of this design philosophy in how Google Chrome allows users to group tabs together. This solution 
+      seemed similar in that users are expected to drag windows 
+      
+    </p>
+    <h3>TaskTracer and automatic task learning</h3>
+    <p>One paper cited by over 300 different subsequent papers, and a primary representative of what would later be referred to (in the 'taskposé paper below')
+      as a "predictive" task interface is <a href="https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=8b5df8c3fd36fc690982cb9fd835937a9500fff8" target="_blank">
+        TaskTracer
+      </a>. TaskTracer was a system that learned from user behavior to automatically assign tasks to windows. 
+    </p>
+    <p>
+      https://www.microsoft.com/en-us/download/details.aspx?id=52426
+      
+    </p>
+    <h3>Taskposé, and the problem with tasks</h3>
+    <p>
+      The main program that seems to throw a wrench into my naïve task-based window management idea was <a href="https://hci.stanford.edu/publications/2008/taskpose/taskpose-uist08.pdf" target="_blank">published in 2008 at Stanford</a>. It begins by summarizing 
+      prior attempts to sort windows by "tasks" (described above), noting that TaskTracer in particular ran into an issue where users struggled to assign windows to tasks.
+      The paper did some UX studies of its own and found that users end up starting on one task such as buying something online but then pivot to something similar while
+      on the website such as browsing similar items. People often don't realize they do this, or do it in a way that is hard to predict.  As a result,
+      the paper found that the best way was to learn from the user's behavior and then allow them to assign windows to "activities" after the fact.
+      The activities though were nebulously defined, and in fact were best un-labelled. The researchers called their solution Taskposé</a>.
+    </p>
+    <p>
+      Its core innovation was using an algorithm to track window "association" along with window "importance" based on 
+      how users switch between windows and which windows get the most viewing time.
+    </p>
+    <p>
+      I'm curious as to why this hasn't been adopted by any of the major desktop OS providers. 
+    </p>
+    <h3>An alternative: "temporal" approaches</h3>
+    "LifeStreams: A Storage Model for Personal Data" by Campbell et al. in 1995. (https://dl.acm.org/doi/10.1145/381854.381893)
+    <p>
+    This will get my momentum going on this subject for now, but when I 
+    do the next post in this series I'm very likely going to look into trying to properly recreate Taskposé via Hammersoon if possible or
+    with a more permissive and modifiable, very likely open-source project 
+  </p>
+  <p>
+    I'm also curious about the idea of "temporal" approaches to window management. I'm thinking of a system where windows are automatically 
+    assigned to tasks based on how long they are open. This would be a very simple system, but I think it could be effective. In the next 
+    post in this series, I'll likely explore more of these ideas.
+  </p>
+  <p>
+    Another thing I might investigate when I next return to this topic is how similar techniques could be levraged to 
+    fix what <a href="https://d1wqtxts1xzle7.cloudfront.net/38642796/Mine2015c-libre.pdf?1441223851=&response-content-disposition=inline%3B+filename%3DThe_Plague_Doctor_A_Promising_Cure_for_t.pdf&Expires=1713397851&Signature=gjmM7K725HwipK2tGwKnuTms2jUUl~OioD5~bwfM4d~VV0BEG2ww1buIKu54qmSOkUxiM8rapjrCONs9L5NHZybe-s2ill1-eUOIVIrABZ1ifztOr4vFDjfbZrvzw6bG2Tp6RQEChhbV4F0plFDtbqyBCJOWwrcljulKXqrBz0839O~Wa-8U9OYwGOwLMkL~dFcCHTsWLddAESbu1mugDkz9nnspC9zH2ABgVVnT~9Nje6S7lYAUDbhJUQ-0xPwtVKGsqtLlGs5b4A1NqXFK88M2ZJmXX2GczfgjdKWM3C1BB1oV2gWhCls4qKdPIT4oqMpECIoLXATKau07Lwek7g__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA" target="_blank">
+      this article
+    </a> refers to as "window plague" in developer IDEs, to deal with the problem of too many open
+    sub-windows when doing programming tasks. Another idea I've had was to "prune" unused windows should the setting be turned on 
+    to do so, and more than a certain number of windows of the same app are open.
+  </p>
+  </article>
+</Layout>
