@@ -1,10 +1,9 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Blog from '../../layouts/Blog.astro';
 ---
 
 
-<Layout title="">
-  <article>
+<Blog nextUrlText="" nextUrl='' priorUrlText='' priorUrl='', relatedLinks={[]}>
     <h2>Mark-and-Return: A Super Simple Task-Based Interface [Task-Based Interface #1]</h2>
     <p>Hello, world.</p>
     <p>
@@ -71,12 +70,16 @@ import Layout from '../../layouts/Layout.astro';
     <p>
       I'm curious as to why this hasn't been adopted by any of the major desktop OS providers. 
     </p>
-    <h3>An alternative: "temporal" approaches</h3>
+    <h3>Other ideas, like "temporal" approaches</h3>
     "LifeStreams: A Storage Model for Personal Data" by Campbell et al. in 1995. (https://dl.acm.org/doi/10.1145/381854.381893)
     <p>
     This will get my momentum going on this subject for now, but when I 
     do the next post in this series I'm very likely going to look into trying to properly recreate Taskposé via Hammersoon if possible or
     with a more permissive and modifiable, very likely open-source project 
+  </p>
+  <p>
+    Because of this, I've added to the above script a way to "rewind" through the windows
+    you've list visited. That way you can scroll back through your history of windows and return to a prior task.
   </p>
   <p>
     I'm also curious about the idea of "temporal" approaches to window management. I'm thinking of a system where windows are automatically 
@@ -91,5 +94,4 @@ import Layout from '../../layouts/Layout.astro';
     sub-windows when doing programming tasks. Another idea I've had was to "prune" unused windows should the setting be turned on 
     to do so, and more than a certain number of windows of the same app are open.
   </p>
-  </article>
-</Layout>
+</Blog>

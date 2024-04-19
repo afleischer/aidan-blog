@@ -1,0 +1,26 @@
+---
+interface Props {
+  relatedLinks: Array<{ url: string; title: string }>;
+}
+
+const { relatedLinks } = Astro.props;
+---
+
+<div>
+  <ul class="list-none">
+    <li>First</li>
+    <li>Second</li>
+    <li>Third</li>
+  </ul>
+{relatedLinks.length > 0 && (
+  <ul>
+    {relatedLinks.map((link) => {
+      return (
+        <li>
+          <a href={link.url}>{link.title}</a>
+        </li>
+      )
+    })}
+  </ul>
+)}
+</div>

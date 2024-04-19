@@ -1,0 +1,31 @@
+---
+import Layout from './Layout.astro'
+import Sidebar from '../components/Sidebar.astro'
+
+interface Props {
+	nextUrlText: string;
+	nextUrl: string;
+	priorUrlText: string;
+  priorUrl: string;
+  relatedLinks: Array<{ url: string; title: string }>;
+}
+
+const { nextUrlText, nextUrl, priorUrlText, priorUrl, relatedLinks } = Astro.props;
+
+---
+
+<Layout title="">
+  <div class="flex flex-col md:flex-row">
+    <!-- Blog text content -->
+    <article>
+      <slot />
+    </article>
+    <Sidebar relatedLinks={relatedLinks} />
+  </div>
+
+  <!-- Add links to view the "previous" and "next" entry -->
+  <div>
+    <a href={priorUrl}>{nextUrlText || "Previous"}</a>
+    <a href={nextUrl}>{ priorUrlText || "Next"}</a>
+  </div>
+</Layout>
