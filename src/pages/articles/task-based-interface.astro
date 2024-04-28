@@ -7,36 +7,45 @@ import Blog from '../../layouts/Blog.astro';
     <h2>Mark-and-Return: A Super Simple Task-Based Interface [Task-Based Interface #1]</h2>
     <p>Hello, world.</p>
     <p>
-      With this blog, I aim to push myself to learn and do more, and thus have some interesting things to hopefully say and show to the world in the process.  
-      To this end, let's address something I've been irritated by for a while.
+      With this blog I aim to push myself to learn more and do more projects on subjects I'm interested in. 
+      I hope to have some interesting things to say and show to the world in the process.
     </p>
     <p>
-      When working, especially in a prior job involving multiple disparate spreadsheets and browser windows, I always found myself being irritated
-      when I had to task switch, becuase that would require me to have to find the correct window for the prior task. Even now when I flick 3 fingers upward on my 
-      Mac's trackpad for mission control I see 90 different windows, many which themselves contain tabs or some type of sub-window system within them. 
+      To this end, let's start with something that I've found irritating by for a while and see what I can do about it.
+      I've always had trouble switching tasks on the computer. Task switching requires remembering and returning to all the correct windows for the prior task. 
+      This means I'd have to spend effort to remember what windows I had open, and then re-open them. Reflexively, rather than put the mental effort into doing this, 
+      I usually open another window until I suddenly have over 300 windows open.
     </p>
-    <p>I need to deal with how to handle being a desktop piler.</p>
     <p>
-      A study done by AT&T labs on <a href="https://dl.acm.org/doi/10.1145/376929.376932" target="_blank">how people manage their physical desktops</a> 
+      While it's tempting to try to self-diagnose myself as having ADHD and thus prone to this as we're all conditioned to do, it's clear after some basic research that 
+      I'm far from alone in this. A study done by AT&T labs on <a href="https://dl.acm.org/doi/10.1145/376929.376932" target="_blank">how people manage their physical desktops</a> 
       came away with two strategies for handling organizing papers on a desk: piling and filing. Piling meant that most 
       papers would end up unorganized- the threshold it set was 40% on the desk versus in filing cabinets. Filing meant the opposite,
       where most papers would be in filing cabinets.
     </p>
     <p>
-      It's not just "laziness". I realized that mentally, I knew that trying to come up with task-like categories *up front* was very, very likely
-      to be inaccurate later, and wouldn't fit the dynamic nature of the tasks. I think my brain knew this and that it wouldn't be worth it to 
-      try. It's also why I never took *that* many notes in school.
+      It's evident from my desktop piling habits that I am indeed one of these 'pilers'. Reading between the lines part
+      of the reason for my piling isn't so much a values-negative "laziness" so much as it is that I know that the task of organizing
+      papers into categories is a task that is likely to be inaccurate later, and thus is a waste of time now. I suspect it's the same
+      reason why I wouldn't take THAT many notes in school- I seldom would intensively every review them outside of a quick glance
+      before the test.
     </p>
     <p>
-      So anecdotally, at least, I know that some type of task-based interface, which would allow me to assign task-categories AFTER my 
-      window pile has already been established, would be the best way to go.  That way I could let tasks emerge naturally and then organize.
+      If I could have a system that would allow me to pile my windows and then later categorize them quickly as-needed, I figured that 
+      might help me, since I could let tasks emerge naturally and then organize after. After a quick search, I found that this idea
+      was not new. In fact, it was a major area of research over the past few decades called known as a "Task-based Interface".
     </p>
     <p>
-      I will describe my research into this topic in a bit. Before I dug too far into research I wanted to see if I could 
-      code up a custom solution I felt would meet my needs. I was able to whip up a Hammerspoon script. <a href="https://github.com/afleischer/mark-and-return-spoon" target="_blank">Here it is if you want to try it</a>.
-      It's simple. It allows you to assign ("mark") the currently open configuration of windows, and then later return to that window with another button press. 
+      The idea of the task-based interface is simple: the task, not the window, will be the primary unit of organization. Windows 
+      still exist but can be coordinated into tasks. 
+    </p>
+    <p>
+      I will describe my literature review on this topic in a bit. But before I dug too far into research I wanted to see if I could 
+      code up a custom solution that I felt would meet my needs first. I was able to whip up a simple Hammerspoon (MacOS desktop automation) script. <a href="https://github.com/afleischer/mark-and-return-spoon" target="_blank">Here it is if you want to try it</a>.
+      It allows you to assign ("mark") the currently open configuration (size and position) of windows, and then later "return" to that window with another button press. 
       It's not perfect, but it's a start. With this simple solution in hand, I set out to see what other, better solutions were already out there. 
     </p>
+    <h2>An incredibly brief overview of other attempts at task-like interfaces</h2>
     <h3>GroupBar and Scalable Fabric- some Earlier systems</h3>
     <p>
       <a href="https://www.patrickbaudisch.com/projects/groupbar/index.html" target="_blank">GroupBar</a> was a project by Patrick Baudisch in 2002 that allowed users to group windows into "activities" and then switch between them.

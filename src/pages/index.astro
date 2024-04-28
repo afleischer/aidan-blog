@@ -1,33 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import LogoHero from '../components/LogoHero.astro';
 ---
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 
-<Layout title="Work In Progress...">
-	<div class="hero">
-		<i>
-			The tech market is bad, and we're at its mercy. It's frozen out there, so let's start a...
-		</i>
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100">
-			<text x="44%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="40" fill="url(#gradient)">
-				Fire in a rainstorm
-			</text>
-			<defs>
-				<linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-					<stop offset="0%" stop-color="#FF4500" />
-					<stop offset="100%" stop-color="#FF8C00" />
-				</linearGradient>
-			</defs>
-		</svg>
-		<p>
-			A tech blog
-		</p>
-	</div>
+<Layout title="">
+	<LogoHero />
 	<main>
-		<h1>Welcome to <span class="text-gradient">Astro!</span></h1>
+		<h3>Recent articles</h3>
+		<ul>
+			<li>
+				<a href="/articles/why-the-name">Why is the blog named this way?</a>
+			</li>
+			<li>
+				<a href="/articles/task-based-interface">A dive into task-based window management</a>
+			</li>
+		</ul>
 		<p class="instructions">
 			To get started, open the directory <code>src/pages</code> in your project.<br />
 			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
@@ -66,9 +57,6 @@ import Card from '../components/Card.astro';
 		color: rgb(var(--text-primary));
 		font-size: 20px;
 		line-height: 1.6;
-	}
-	text {
-		font-family: 'Nanum Gothic', sans-serif;
 	}
 	.astro-a {
 		position: absolute;
