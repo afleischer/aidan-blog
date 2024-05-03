@@ -4,6 +4,7 @@ import Blog from '../../layouts/Blog.astro';
 
 
 <Blog nextUrlText="" nextUrl='' priorUrlText='' priorUrl='', relatedLinks={[]}>
+    <time datetime="05-01-2024">May 1, 2024</time>
     <h2>Mark-and-Return: A Super Simple Task-Based Interface [Task-Based Interface #1]</h2>
     <p>Hello, world.</p>
     <p>
@@ -13,45 +14,47 @@ import Blog from '../../layouts/Blog.astro';
     <p>
       To this end, let's start with something that I've found irritating by for a while and see what I can do about it.
       I've always had trouble switching tasks on the computer. Task switching requires remembering and returning to all the correct windows for the prior task. 
-      This means I'd have to spend effort to remember what windows I had open, and then re-open them. Reflexively, rather than put the mental effort into doing this, 
+      This means I'd have to reallocate valuable <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2864034/">working memory capacity</a> in my brain to remember what windows I had open, and then re-open them.
+      This is extra rough when I'm already trying to hold a programming problem in my head. Reflexively, rather than put the mental effort into doing this, 
       I usually open another window until I suddenly have over 300 windows open.
     </p>
     <p>
-      While it's tempting to try to self-diagnose myself as having ADHD and thus prone to this as we're all conditioned to do, it's clear after some basic research that 
+      While it was tempting to try to self-diagnose myself as having ADHD and thus prone to this as we're all trained to do, it was clear after some basic research that 
       I'm far from alone in this. A study done by AT&T labs on <a href="https://dl.acm.org/doi/10.1145/376929.376932" target="_blank">how people manage their physical desktops</a> 
       came away with two strategies for handling organizing papers on a desk: piling and filing. Piling meant that most 
-      papers would end up unorganized- the threshold it set was 40% on the desk versus in filing cabinets. Filing meant the opposite,
-      where most papers would be in filing cabinets.
+      papers would end up unorganized- the threshold it set was 40% on the desk versus in filing cabinets. Filing meant the opposite-
+      most papers would be filed into cabinets meticulously as soon as they were encountered.
     </p>
     <p>
-      It's evident from my desktop piling habits that I am indeed one of these 'pilers'. Reading between the lines part
+      It was evident from my desktop piling habits that I am indeed one of these 'pilers'. Reading between the lines part
       of the reason for my piling isn't so much a values-negative "laziness" so much as it is that I know that the task of organizing
       papers into categories is a task that is likely to be inaccurate later, and thus is a waste of time now. I suspect it's the same
       reason why I wouldn't take THAT many notes in school- I seldom would intensively every review them outside of a quick glance
       before the test.
     </p>
     <p>
-      If I could have a system that would allow me to pile my windows and then later categorize them quickly as-needed, I figured that 
-      might help me, since I could let tasks emerge naturally and then organize after. After a quick search, I found that this idea
-      was not new. In fact, it was a major area of research over the past few decades called known as a "Task-based Interface".
-    </p>
-    <p>
-      The idea of the task-based interface is simple: the task, not the window, will be the primary unit of organization. Windows 
+      If I could have a system that would allow me to pile my windows and then later categorize them quickly as-needed 
+      I could let tasks emerge naturally and then organize after. The dilemma of the piler would be solved. After a quick search, I found that this idea
+      was not new but a major area of research over the past few decades known as a "Task-based Interface". The idea behind it is simple: the task, not the window, will be the primary unit of organization. Desktop windows 
       still exist but can be coordinated into tasks. 
     </p>
     <p>
-      I will describe my literature review on this topic in a bit. But before I dug too far into research I wanted to see if I could 
-      code up a custom solution that I felt would meet my needs first. I was able to whip up a simple Hammerspoon (MacOS desktop automation) script. <a href="https://github.com/afleischer/mark-and-return-spoon" target="_blank">Here it is if you want to try it</a>.
+      Before I dug too far into research I wanted to see if I could code up a custom solution that I felt would meet my needs first. As a result, I was able to whip up a simple Hammerspoon (MacOS desktop automation) script. <a href="https://github.com/afleischer/mark-and-return-spoon" target="_blank">Here it is if you want to try it</a>.
       It allows you to assign ("mark") the currently open configuration (size and position) of windows, and then later "return" to that window with another button press. 
-      It's not perfect, but it's a start. With this simple solution in hand, I set out to see what other, better solutions were already out there. 
+      It's not perfect, but it's a start. With this simple solution in hand and a warm feeling of self-satisfaction for whipping up another micro-project, I set out to see what other, better solutions were already out there. 
     </p>
-    <h2>An incredibly brief overview of other attempts at task-like interfaces</h2>
+    <h2>An incredibly brief overview of other attempts at task-like interfaces, and how they relate to the script I just made</h2>
     <h3>GroupBar and Scalable Fabric- some Earlier systems</h3>
     <p>
       <a href="https://www.patrickbaudisch.com/projects/groupbar/index.html" target="_blank">GroupBar</a> was a project by Patrick Baudisch in 2002 that allowed users to group windows into "activities" and then switch between them.
       Thinking to modern operating systems, I see the echoes of this design philosophy in how Google Chrome allows users to group tabs together. This solution 
-      seemed similar in that users are expected to drag windows 
-      
+      seemed similar in that users are expected to drag windows into groupings, but it was more focused on the task than the window.
+    </p>
+    <p>
+      Comparing it to my "Mark-and-return" script, GroupBar has the benefit imitating the form and structure of Windows XP's taskbar. GroupBar imitates
+      the taskbar but adds the ability to group windows together in a very similar way to how Chrome <a href="https://blog.google/products/chrome/manage-tabs-with-google-chrome/">allows a user to to group tabs</a>.
+      My script only makes use of the Mac OSX system prompt to call up what groups have been assigned, so there is no persistent display at the moment.  
+      However, my script has the benefit of being able to assign windows to multiple tasks. This will come up again below as known problem early task-based interfaces.
     </p>
     <h3>TaskTracer and automatic task learning</h3>
     <p>One paper cited by over 300 different subsequent papers, and a primary representative of what would later be referred to (in the 'taskposé paper below')
@@ -63,29 +66,36 @@ import Blog from '../../layouts/Blog.astro';
       https://www.microsoft.com/en-us/download/details.aspx?id=52426
       
     </p>
-    <h3>Taskposé, and the problem with tasks</h3>
+    <h3>Taskposé and the problem with tasks</h3>
     <p>
       The main program that seems to throw a wrench into my naïve task-based window management idea was <a href="https://hci.stanford.edu/publications/2008/taskpose/taskpose-uist08.pdf" target="_blank">published in 2008 at Stanford</a>. It begins by summarizing 
-      prior attempts to sort windows by "tasks" (described above), noting that TaskTracer in particular ran into an issue where users struggled to assign windows to tasks.
-      The paper did some UX studies of its own and found that users end up starting on one task such as buying something online but then pivot to something similar while
+      prior attempts to sort windows by "tasks", many of which I've described above. It noted that a common issue between
+      task-based solutions was that users struggled to assign windows to tasks.  Users would start on one task such as buying something online but then pivot to something similar while
       on the website such as browsing similar items. People often don't realize they do this, or do it in a way that is hard to predict.  As a result,
       the paper found that the best way was to learn from the user's behavior and then allow them to assign windows to "activities" after the fact.
-      The activities though were nebulously defined, and in fact were best un-labelled. The researchers called their solution Taskposé</a>.
+      The activities though were nebulously defined, and in fact were best un-labelled. The researchers called their solution Taskposé.
     </p>
     <p>
       Its core innovation was using an algorithm to track window "association" along with window "importance" based on 
       how users switch between windows and which windows get the most viewing time.
     </p>
     <p>
+      So from my cursory research, it seems that the rough progression in this field up until at least 2008 was from manual task assignment to automatic task assignment to looser window association learning.
+      My littler script seems to land near the start of this progression but with some slight benefits that make it useful enough to me, for now at least.
+      In the next post in this series, I'll likely explore other ways to manage windows, including some ideas I've seen such as <a></a>"temporal" approaches, since I've often found myself wanting to 'backtrack'
+      through windows to get to some prior state in my task without having to open each application one by one. With additional research, it'll be interesting
+      to see how far I can push this script.
+    </p>
+    <!-- <p>
       I'm curious as to why this hasn't been adopted by any of the major desktop OS providers. 
     </p>
     <h3>Other ideas, like "temporal" approaches</h3>
     "LifeStreams: A Storage Model for Personal Data" by Campbell et al. in 1995. (https://dl.acm.org/doi/10.1145/381854.381893)
     <p>
-    This will get my momentum going on this subject for now, but when I 
-    do the next post in this series I'm very likely going to look into trying to properly recreate Taskposé via Hammersoon if possible or
-    with a more permissive and modifiable, very likely open-source project 
-  </p>
+      This will get my momentum going on this subject for now, but when I 
+      do the next post in this series I'm very likely going to look into trying to properly recreate Taskposé via Hammersoon if possible or
+      with a more permissive and modifiable, very likely open-source project 
+    </p>
   <p>
     Because of this, I've added to the above script a way to "rewind" through the windows
     you've list visited. That way you can scroll back through your history of windows and return to a prior task.
@@ -96,11 +106,11 @@ import Blog from '../../layouts/Blog.astro';
     post in this series, I'll likely explore more of these ideas.
   </p>
   <p>
-    Another thing I might investigate when I next return to this topic is how similar techniques could be levraged to 
+    Another thing I might investigate when I next return to this topic is how similar techniques could be leveraged to 
     fix what <a href="https://d1wqtxts1xzle7.cloudfront.net/38642796/Mine2015c-libre.pdf?1441223851=&response-content-disposition=inline%3B+filename%3DThe_Plague_Doctor_A_Promising_Cure_for_t.pdf&Expires=1713397851&Signature=gjmM7K725HwipK2tGwKnuTms2jUUl~OioD5~bwfM4d~VV0BEG2ww1buIKu54qmSOkUxiM8rapjrCONs9L5NHZybe-s2ill1-eUOIVIrABZ1ifztOr4vFDjfbZrvzw6bG2Tp6RQEChhbV4F0plFDtbqyBCJOWwrcljulKXqrBz0839O~Wa-8U9OYwGOwLMkL~dFcCHTsWLddAESbu1mugDkz9nnspC9zH2ABgVVnT~9Nje6S7lYAUDbhJUQ-0xPwtVKGsqtLlGs5b4A1NqXFK88M2ZJmXX2GczfgjdKWM3C1BB1oV2gWhCls4qKdPIT4oqMpECIoLXATKau07Lwek7g__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA" target="_blank">
       this article
     </a> refers to as "window plague" in developer IDEs, to deal with the problem of too many open
     sub-windows when doing programming tasks. Another idea I've had was to "prune" unused windows should the setting be turned on 
     to do so, and more than a certain number of windows of the same app are open.
-  </p>
+  </p> -->
 </Blog>

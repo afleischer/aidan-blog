@@ -1,6 +1,7 @@
 ---
 import Layout from './Layout.astro'
 import Sidebar from '../components/Sidebar.astro'
+import LogoBanner from '../components/LogoBanner.astro';
 
 interface Props {
 	nextUrlText: string;
@@ -15,9 +16,10 @@ const { nextUrlText, nextUrl, priorUrlText, priorUrl, relatedLinks } = Astro.pro
 ---
 
 <Layout title="">
-  <div class="flex flex-col md:flex-row">
+  <LogoBanner />
+  <div class="flex flex-col md:flex-row justify-center">
     <!-- Blog text content -->
-    <article>
+    <article class="max-w-[700px]">
       <slot />
     </article>
     <Sidebar relatedLinks={relatedLinks} />
